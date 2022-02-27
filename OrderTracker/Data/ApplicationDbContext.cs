@@ -9,6 +9,8 @@ namespace OrderTracker.Data
         {
 
         }
-        public DbSet<Vendor> Vendors { get; set; }        
+        public DbSet<Vendor> Vendors { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }

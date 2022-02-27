@@ -14,9 +14,8 @@ namespace OrderTracker.Models
 
         public string PhoneNumber { get; set; }
 
-        public int DisplayOrder { get; set; }
-
         public DateTime DateCreated { get; set; } = DateTime.Now;
+
     }
 }
 

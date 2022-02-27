@@ -1,7 +1,73 @@
-﻿
+﻿@model IEnumerable<Order>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Orders</h1>
+@if(TempData["success"] != null)
+{
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>@TempData["success"]</strong>
+</div>
+}
 
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-light">Order List</h2>
+        </div>
+        <div class="table table-hover col-6 text-end">
+            <a asp-controller="Order" asp-action="CreateOrder" class="btn btn-outline-success">
+                <i class="bi bi-plus-square"></i> &nbsp; Add New Order
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class ="table table-borderd table-striped" style="width: 100%">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Bread Order
+            </th>
+            <th>
+                Pastery Order
+            </th>
+            <th>
+                Date Added
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr class="table table-hover table-secondary">
+                <td width 10%>
+                    @obj.Id
+                </td>
+                <td width 30%>
+                    @obj.BreadOrder
+                </td>
+                <td width 30%>
+                    @obj.PasteryOrder
+                </td>
+                <td width 30%>
+                    @obj.DateCreated
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Order" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-outline-warning"><i class="bi bi-pencil-square"></i> Edit</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Order" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-outline-danger"><i class="bi bi-person-dash-fill"></i> Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

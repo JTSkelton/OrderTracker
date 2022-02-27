@@ -1,0 +1,32 @@
+﻿@model Order
+
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-light">Delete Vendor</h2>
+        </div>
+        <fieldset disabled="">
+        <div class="mb-3">
+            <label asp-for="BreadOrder">Vendor Name</label>
+            <input asp-for="BreadOrder" class="form-control" />
+            <span asp-validation-for="BreadOrder" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PasteryOrder">Vendor Description</label><br />
+            <textarea asp-for="PasteryOrder" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="PasteryOrder" class="text-danger"></span>
+        </div>
+        </fieldset>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete Order</button>
+        <a asp-controller="Order" asp-action="Index" class="btn btn-secondary" style="width:150px">Back To List</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+

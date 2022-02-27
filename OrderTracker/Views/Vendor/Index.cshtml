@@ -18,7 +18,7 @@
             <h2 class="text-light">Vendor List</h2>
         </div>
         <div class="table table-hover col-6 text-end">
-            <a asp-controller="Vendor" asp-action="CreateVendor" class="btn btn-outline-light">
+            <a asp-controller="Vendor" asp-action="CreateVendor" class="btn btn-outline-success">
                 <i class="bi bi-plus-square"></i> &nbsp; Add New Vendor
             </a>
         </div>
@@ -59,9 +59,6 @@
                     @obj.Name
                 </td>
                 <td width 30%>
-                    @obj.DisplayOrder
-                </td>
-                <td width 30%>
                     @obj.Description
                 </td>
                 <td width 30%>
@@ -80,8 +77,12 @@
                         <a asp-controller="Vendor" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-outline-danger"><i class="bi bi-person-dash-fill"></i> Delete</a>
                     </div>
                 </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Order" asp-action="CreateOrder" class="btn btn-outline-success"><i class="bi bi-plus-square"></i> Order</a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
 </table>
-
