@@ -12,7 +12,7 @@ using OrderTracker.Data;
 namespace OrderTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220226215028_AddVendorToDatabase")]
+    [Migration("20220227051626_AddVendorToDatabase")]
     partial class AddVendorToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,10 @@ namespace OrderTracker.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

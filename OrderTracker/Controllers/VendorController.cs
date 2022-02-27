@@ -17,5 +17,11 @@ namespace OrderTracker.Controllers
             IEnumerable<Vendor> objectCatagoryList = _db.Vendors;
             return View(objectCatagoryList);
         }
+
+        //GET
+        public IActionResult CreateVendor()
+        {
+            return View();
+        }
     }
 }
