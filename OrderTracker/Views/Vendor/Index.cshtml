@@ -4,12 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
+@if(TempData["success"] != null)
+{
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>@TempData["success"]</strong>
+</div>
+}
+
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
             <h2 class="text-light">Vendor List</h2>
         </div>
-        <div class="col-6 text-end">
+        <div class="table table-hover col-6 text-end">
             <a asp-controller="Vendor" asp-action="CreateVendor" class="btn btn-outline-light">
                 <i class="bi bi-plus-square"></i> &nbsp; Add New Vendor
             </a>
@@ -21,22 +29,56 @@
     <thead>
         <tr>
             <th>
+                Id
+            </th>
+            <th>
                 Vendor Name
             </th>
             <th>
-                Display Order
+                Orders
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Date Added
             </th>
         </tr>
     </thead>
     <tbody>
         @foreach(var obj in Model)
         {
-            <tr>
+            <tr class="table table-hover table-secondary">
+                <td width 10%>
+                    @obj.Id
+                </td>
                 <td width 50%>
                     @obj.Name
                 </td>
                 <td width 30%>
                     @obj.DisplayOrder
+                </td>
+                <td width 30%>
+                    @obj.Description
+                </td>
+                <td width 30%>
+                    @obj.PhoneNumber
+                </td>
+                <td width 30%>
+                    @obj.DateCreated
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Vendor" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-outline-warning"><i class="bi bi-pencil-square"></i> Edit</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Vendor" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-outline-danger"><i class="bi bi-person-dash-fill"></i> Delete</a>
+                    </div>
                 </td>
             </tr>
         }
