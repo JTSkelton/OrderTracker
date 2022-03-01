@@ -14,8 +14,8 @@ namespace OrderTracker.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<Order> objectCatagoryList = _db.Orders;
-            return View(objectCatagoryList);
+            IEnumerable<Order> orderCatagoryList = _db.Orders;
+            return View(orderCatagoryList);
         }
 
         //GET
@@ -54,6 +54,22 @@ namespace OrderTracker.Controllers
             }
             return View(orderFromDb);
         }
+
+        //GET
+        public IActionResult ViewVendorOrders(string? name)
+        {
+            if (name == null)
+            {
+                return NotFound();
+            }
+            var orderFromDb = _db.Orders.Find(name);
+            if (orderFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(orderFromDb);
+        }
+
 
         //EDIT
         [HttpPost]

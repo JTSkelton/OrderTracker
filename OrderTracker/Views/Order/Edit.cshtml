@@ -7,6 +7,11 @@
             <h2 class="text-light">Edit Vendor</h2>
         </div>
         <div class="mb-3">
+            <label asp-for="Name">Bread Order</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
             <label asp-for="BreadOrder">Vendor Name</label>
             <input asp-for="BreadOrder" class="form-control" />
             <span asp-validation-for="BreadOrder" class="text-danger"></span>

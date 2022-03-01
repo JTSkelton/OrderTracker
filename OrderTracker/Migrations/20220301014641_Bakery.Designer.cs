@@ -12,8 +12,8 @@ using OrderTracker.Data;
 namespace OrderTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220227212835_AddVendorToDatabase")]
-    partial class AddVendorToDatabase
+    [Migration("20220301014641_Bakery")]
+    partial class Bakery
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,22 +26,26 @@ namespace OrderTracker.Migrations
 
             modelBuilder.Entity("OrderTracker.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
 
                     b.Property<int>("BreadOrder")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderDateCreated")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PasteryOrder")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("OrderId");
 
                     b.ToTable("Orders");
                 });

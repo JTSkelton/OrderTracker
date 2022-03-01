@@ -1,16 +1,20 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@model Order;
 
-@model Order
+@{
+    ViewData["Order"] = "Index";
+}
 
 <h1>Orders</h1>
 
 <form method="post">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-light">Create Vendor</h2>
+            <h2 class="text-light">Create Order</h2>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="BreadOrder">Bread Order</label>
